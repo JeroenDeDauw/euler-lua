@@ -7,12 +7,13 @@
 digits = 10
 
 function fiboGen()
-	a, b = 0, 1
+	a, b = 1, 0
 	return coroutine.wrap(function ()
 		while true do
-			c = a
-			a, b = b, a + b
-			coroutine.yield( c )
+			coroutine.yield( a )
+			b = a + b
+			coroutine.yield( b )
+			a= a + b
 		end
 	end)
 end
